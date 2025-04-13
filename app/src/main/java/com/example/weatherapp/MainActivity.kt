@@ -26,17 +26,14 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        // Инициализация API через ApiService
         val coordinatesApi = ApiService.coordinatesApi
         val weatherApi = ApiService.weatherApi
 
-        // Инициализация репозиториев и UseCase
         val coordinatesRepository = CoordinatesRepository(coordinatesApi)
         val weatherRepository = WeatherRepository(weatherApi)
         val getCoordinatesUseCase = GetCoordinatesUseCase(coordinatesRepository)
         val getWeatherUseCase = GetWeatherUseCase(weatherRepository)
 
-        // Инициализация ViewModel с зависимостями через фабрику
         viewModel = ViewModelProvider(
             this,
             WeatherViewModelFactory(getWeatherUseCase, getCoordinatesUseCase)

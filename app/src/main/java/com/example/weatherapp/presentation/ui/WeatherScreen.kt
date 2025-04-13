@@ -1,44 +1,62 @@
 package com.example.weatherapp.presentation.ui
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Button
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material.*
+import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import com.example.weatherapp.presentation.viewmodels.WeatherViewModel
-import androidx.compose.ui.Modifier // Импорт для Modifier
-import androidx.compose.ui.unit.dp // Импорт для dp
 
 @Composable
 fun WeatherScreen(viewModel: WeatherViewModel, modifier: Modifier = Modifier) {
-    var city by remember { mutableStateOf("") }
+    var selectedCity by remember { mutableStateOf("") }
     var isLoading by remember { mutableStateOf(false) }
+    var expanded by remember { mutableStateOf(false) }
+    val cities = listOf("Moscow", "Rome", "Warsaw", "Minsk", "Mexico City", "Berlin", "London", "Paris", "Madrid", "Tokyo")
 
-    Column(modifier = modifier.padding(16.dp)) {
-        TextField(value = city, onValueChange = { city = it }, label = { Text("Введите город") })
-        Button(onClick = {
+    Column(
+        modifier = modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Top,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        WeatherDropdownMenu(cities, selectedCity, expanded, { city ->
+            selectedCity = city
             isLoading = true
-            viewModel.fetchWeather(city) {
-                isLoading = false
-            }
-        }) {
-            Text("Получить погоду")
-        }
+            viewModel.fetchWeather(city) { isLoading = false }
+        }, { isExpanded ->
+            expanded = isExpanded
+        })
+
+        Spacer(modifier = Modifier.height(16.dp))
 
         if (isLoading) {
-            Text("Загрузка...")
+            Text("Loading...")
         } else {
             viewModel.weather.observeAsState().value?.let { weather ->
                 if (weather != null) {
-                    Text("Температура: ${weather.hourly.temperature_2m.firstOrNull() ?: "Нет данных"}")
+                    Column(modifier = Modifier.fillMaxWidth().padding(16.dp)) {
+                        Text("Weather in $selectedCity for the next 14 days", style = MaterialTheme.typography.h6)
+
+                        Spacer(modifier = Modifier.height(16.dp))
+
+                        LazyColumn(modifier = Modifier.fillMaxWidth()) {
+                            items(weather.daily.time.indices.toList()) { i ->
+                                WeatherCard(
+                                    dateString = weather.daily.time.getOrNull(i),
+                                    maxTemp = weather.daily.temperature_2m_max[i],
+                                    minTemp = weather.daily.temperature_2m_min[i],
+                                    precipitation = weather.daily.precipitation_sum[i],
+                                    windSpeed = weather.daily.wind_speed_10m_max[i]
+                                )
+                            }
+                        }
+                    }
                 } else {
-                    Text("Ошибка получения данных о погоде.")
+                    Text("Error retrieving weather data.")
                 }
             }
         }
