@@ -64,6 +64,8 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1") // Для работы с LiveData
     implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1") // ViewModel для Compose
 
+    implementation ("com.jakewharton.threetenabp:threetenabp:1.3.1")
+
 
     // Retrofit для работы с API
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
