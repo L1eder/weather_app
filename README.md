@@ -3,6 +3,41 @@
 ## Описание
 Это мобильное приложение предоставляет пользователям возможность получать актуальный прогноз погоды на основе выбранного города. Приложение разработано с использованием Kotlin и Jetpack Compose, что обеспечивает современный и отзывчивый интерфейс.
 
+## Архитектура проекта
+com.example.weatherapp
+├── data
+│   ├── api
+│   │   ├── ApiService.kt
+│   │   ├── CoordinatesApi.kt
+│   │   └── WeatherApi.kt
+│   ├── models
+│   │   ├── CityCoordinatesResponse.kt
+│   │   └── WeatherResponse.kt
+│   └── repositories
+│       ├── CoordinatesRepository.kt
+│       └── WeatherRepository.kt
+│
+├── domain
+│   ├── model
+│   │   └── (доменные модели — например, WeatherInfo.kt, City.kt)
+│   └── usecases
+│       ├── GetCoordinatesUseCase.kt
+│       └── GetWeatherUseCase.kt
+│
+├── presentation
+│   ├── ui
+│   │   ├── WeatherCard.kt
+│   │   ├── WeatherDropdownMenu.kt
+│   │   └── WeatherScreen.kt
+│   └── viewmodels
+│       ├── WeatherViewModel.kt
+│       └── WeatherViewModelFactory.kt
+│
+├── ui.theme
+│   └── (цвета, типографика, темы)
+│
+└── MainActivity.kt
+
 ## Структура проекта
 
 ### 1. Data layer
@@ -22,7 +57,7 @@
 
 ### 2. Domain layer
 
-#### Используемые usecases:
+#### Usecases:
 - **GetCoordinatesUseCase**: Получает координаты для заданного названия города.
 - **GetWeatherUseCase**: Получает данные о погоде на основе широты и долготы.
 
