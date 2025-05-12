@@ -1,3 +1,11 @@
 <resources>
+    //CityHeader
     <string name="app_name">Weather App</string>
+    <string name="app_rule">Select a city or add a new one</string>
+
+    //WeatherIsLoading
+    <string name="loading">Loading...</string>
+
+    //WeatherHeader
+    <string name="description">Weather for the next 14 days in %1$s</string>
 </resources>
