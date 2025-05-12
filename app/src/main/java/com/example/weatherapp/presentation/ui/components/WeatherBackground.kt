@@ -16,12 +16,15 @@ fun WeatherBackground(viewModel: WeatherViewModel, modifier: Modifier = Modifier
     val weatherState = viewModel.weather.observeAsState().value
 
     val backgroundImageId = when (weatherState?.hourly?.weather_code?.firstOrNull()) {
-        0 -> R.drawable.sunny
-        1 -> R.drawable.partly_cloudy
-        2 -> R.drawable.cloudy
-        3 -> R.drawable.rainy
-        4 -> R.drawable.snowy
-        else -> R.drawable.background2
+        0, 1 -> R.drawable.sunny
+        2 -> R.drawable.partly_cloudy
+        3 -> R.drawable.cloudy
+        45, 48 -> R.drawable.fog
+        51, 53, 56, 57 -> R.drawable.drizzle
+        61, 63, 65, 66, 67, 80, 81, 82 -> R.drawable.rainy
+        71, 73, 75, 77, 85, 86 -> R.drawable.snowy
+        95, 96, 99 -> R.drawable.thunderstorm
+        else -> R.drawable.unknown
     }
 
     Box(

@@ -16,7 +16,7 @@ fun CityBackground()
         modifier = Modifier.fillMaxSize()
     ) {
         Image(
-            painter = painterResource(id = R.drawable.background3),
+            painter = painterResource(id = R.drawable.city_background),
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxSize()
