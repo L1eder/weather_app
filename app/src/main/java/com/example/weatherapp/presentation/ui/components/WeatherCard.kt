@@ -1,4 +1,4 @@
-package com.example.weatherapp.presentation.ui
+package com.example.weatherapp.presentation.ui.components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -12,7 +12,9 @@ fun WeatherCard(dateString: String?, maxTemp: Double, minTemp: Double, precipita
     Card(
         elevation = 4.dp,
         shape = RoundedCornerShape(8.dp),
-        modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp)
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 8.dp)
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text("Date: ${dateString ?: "Unknown"}", style = MaterialTheme.typography.h6)

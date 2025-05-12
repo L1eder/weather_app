@@ -6,16 +6,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.weatherapp.data.models.WeatherResponse
-import com.example.weatherapp.data.models.CityCoordinatesResponse // Убедитесь, что это правильный импорт
+import com.example.weatherapp.data.models.CityCoordinatesResponse
 import com.example.weatherapp.domain.usecases.GetCoordinatesUseCase
 import com.example.weatherapp.domain.usecases.GetWeatherUseCase
 import kotlinx.coroutines.launch
 
-class WeatherViewModel(
-    private val getWeatherUseCase: GetWeatherUseCase,
-    private val getCoordinatesUseCase: GetCoordinatesUseCase
-) : ViewModel() {
-
+class WeatherViewModel(private val getWeatherUseCase: GetWeatherUseCase, private val getCoordinatesUseCase: GetCoordinatesUseCase) : ViewModel() {
     private val _weather = MutableLiveData<WeatherResponse?>()
     val weather: LiveData<WeatherResponse?> get() = _weather
 
