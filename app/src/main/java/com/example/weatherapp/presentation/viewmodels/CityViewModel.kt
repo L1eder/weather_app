@@ -23,7 +23,7 @@ class CityViewModel : ViewModel() {
 
     fun addCity(city: String) {
         if (city.isNotEmpty() && !_cities.value.contains(city)) {
-            _cities.value = _cities.value + city
+            _cities.value += city
         }
     }
 }

@@ -42,6 +42,7 @@ fun WeatherScreen(viewModel: WeatherViewModel, city: String?) {
                 Spacer(modifier = Modifier.height(16.dp))
 
                 WeatherHeader(city)
+
                 WeatherCurrentCard(city, weather)
                 Spacer(modifier = Modifier.height(16.dp))
 
@@ -51,14 +52,16 @@ fun WeatherScreen(viewModel: WeatherViewModel, city: String?) {
                         val minTemp = weather.daily.temperature_2m_min.getOrNull(i)
                         val precipitation = weather.daily.precipitation_sum.getOrNull(i)
                         val windSpeed = weather.daily.wind_speed_10m_max.getOrNull(i)
+                        val weatherCode = weather.hourly.weather_code.getOrNull(i) ?: -1
 
-                        if (maxTemp != null && minTemp != null && precipitation != null && windSpeed != null) {
+                        if (maxTemp != null && minTemp != null && precipitation != null && windSpeed != null && weatherCode != -1) {
                             WeatherCard(
                                 dateString = weather.daily.time.getOrNull(i),
                                 maxTemp = maxTemp,
                                 minTemp = minTemp,
                                 precipitation = precipitation,
-                                windSpeed = windSpeed
+                                windSpeed = windSpeed,
+                                weatherCode = weatherCode
                             )
                         }
                     }

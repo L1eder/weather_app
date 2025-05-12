@@ -43,16 +43,16 @@ class MainActivity : ComponentActivity() {
             WeatherViewModelFactory(getWeatherUseCase, getCoordinatesUseCase)
         ).get(WeatherViewModel::class.java)
 
-        cityViewModel = ViewModelProvider(this).get(CityViewModel::class.java) // Инициализируем CityViewModel
+        cityViewModel = ViewModelProvider(this).get(CityViewModel::class.java)
 
         setContent {
             WeatherAppTheme {
-                val navController = rememberNavController() // Создаем NavController
+                val navController = rememberNavController()
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     NavHost(navController = navController, startDestination = "city_selection") {
                         composable("city_selection") {
                             CitySelectionScreen(
-                                cityViewModel, // Передаем CityViewModel
+                                cityViewModel,
                                 navController,
                                 modifier = Modifier.padding(innerPadding)
                             )
