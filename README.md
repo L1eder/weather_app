@@ -48,7 +48,8 @@ com.example.weatherapp
 │   │       ├── CitySelectionScreen.kt    
 │   │       └── WeatherScreen.kt    
 │   └── viewmodels      
-│       ├── WeatherViewModel.kt      
+│       ├── WeatherViewModel.kt     
+│       ├── CityViewModel.kt
 │       └── WeatherViewModelFactory.kt      
 │      
 ├── ui.theme    
