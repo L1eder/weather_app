@@ -48,10 +48,10 @@ com.example.weatherapp
 │   │       ├── CitySelectionScreen.kt    
 │   │       └── WeatherScreen.kt    
 │   └── viewmodels      
-│       ├── WeatherViewModel.kt     
-│       ├── CityViewModel.kt
-│       └── WeatherViewModelFactory.kt      
-│      
+│       ├── WeatherViewModel.kt       
+│       ├── CityViewModel.kt  
+│       └── WeatherViewModelFactory.kt        
+│        
 ├── ui.theme    
 │   └── (цвета, типографика, темы)    
 │    
