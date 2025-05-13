@@ -1,11 +1,12 @@
 # Мобильное приложение "Прогноз погоды"
 
 ## Описание
-Это мобильное приложение предоставляет пользователям возможность получать актуальный прогноз погоды на основе выбранного города. Приложение разработано с использованием Kotlin и Jetpack Compose, что обеспечивает современный и отзывчивый интерфейс.
+Приложение предназначено для отображения информации о температуре в различных городах. Пользователь выбирает город из списка, либо добавляет интересующий, если его нет в списке, после чего приложение обращается к API и показывает прогноз на две недели вперёд. Для каждого дня указывается минимальная и максимальная температура, скорость ветра и уровень осадков, а также простая иконка, отражающая текущее состояние погоды. Также на экране пользователь может отдельно видеть погоду в городе на данный момент и на последующие дни. 
+Для создания интерфейса использовался Jetpack Compose, а для выполнения сетевых запросов – Retrofit. Также приложение использует архитектуру MVVM (Model-View-ViewModel). Управление состоянием и логикой реализовано с помощью ViewModel. В приложении задействованы два API: один для получения координат города, другой – для получения погодных данных на их основе.
 
 ## Демонстрация работы приложения
 
-<img src="app/src/main/res/drawable/app_presentation.gif" alt="ScreenCast" width="400"/>
+<img src="app/src/main/res/drawable/app_presentation_final.gif" alt="ScreenCast" width="400"/>
 
 ## Архитектура проекта
 com.example.weatherapp  
@@ -16,6 +17,8 @@ com.example.weatherapp
 │   │   └── WeatherApi.kt  
 │   ├── models  
 │   │   ├── CityCoordinatesResponse.kt  
+│   │   ├── DailyForecast.kt  
+│   │   ├── HourlyForecast.kt  
 │   │   └── WeatherResponse.kt  
 │   └── repositories  
 │       ├── CoordinatesRepository.kt  
@@ -23,7 +26,7 @@ com.example.weatherapp
 │  
 ├── domain  
 │   ├── model  
-│   │       
+│   │   └── ...  
 │   └── usecases  
 │       ├── GetCoordinatesUseCase.kt  
 │       └── GetWeatherUseCase.kt  
@@ -31,28 +34,27 @@ com.example.weatherapp
 ├── presentation  
 │   ├── ui  
 │   │   ├── components  
-│   │   │    ├── CityBackground.kt    
-│   │   │    ├── CityCard.kt    
-│   │   │    ├── CityHeader.kt    
-│   │   │    ├── CitySearchBar.kt    
-│   │   │    ├── WeatherBackground.kt    
-│   │   │    ├── WeatherCard.kt    
-│   │   │    ├── WeatherCurrentCard.kt    
-│   │   │    ├── WeatherHeader.kt    
-│   │   │    ├── WeatherIcon.kt    
-│   │   │    └── WeatherIsLoading.kt  
-│   │   │  
+│   │   │   ├── CityBackground.kt    
+│   │   │   ├── CityCard.kt    
+│   │   │   ├── CityHeader.kt    
+│   │   │   ├── CitySearchBar.kt    
+│   │   │   ├── WeatherBackground.kt    
+│   │   │   ├── WeatherCard.kt    
+│   │   │   ├── WeatherCurrentCard.kt    
+│   │   │   ├── WeatherHeader.kt    
+│   │   │   ├── WeatherIcon.kt    
+│   │   │   └── WeatherIsLoading.kt  
 │   │   └── screen    
 │   │       ├── CitySelectionScreen.kt    
 │   │       └── WeatherScreen.kt    
 │   └── viewmodels      
-│         ├── WeatherViewModel.kt      
-│         └── WeatherViewModelFactory.kt      
+│       ├── WeatherViewModel.kt      
+│       └── WeatherViewModelFactory.kt      
 │      
 ├── ui.theme    
 │   └── (цвета, типографика, темы)    
 │    
-└── MainActivity.kt    
+└── MainActivity.kt  
 
 ## Структура проекта
 
@@ -91,7 +93,7 @@ com.example.weatherapp
 Точка входа в приложение, где инициализируются зависимости, включая репозитории и используемые случаи. ViewModel создается с использованием паттерна фабрики для передачи зависимостей.
 
 ## Ключевые особенности
-- **Выбор города**: Пользователи могут выбрать город из выпадающего меню для получения его данных о погоде.
+- **Выбор и добавление города**: Пользователи могут выбрать город из списка для получения его данных о погоде или добавить новый город.
 - **Состояние загрузки**: Отображает текст загрузки во время получения данных.
 - **Обработка ошибок**: Логирует ошибки в случае неудачи при получении координат или данных о погоде.
 - **Отображение погоды на ближайшие две недели**: Пользователь может увидеть погоду на ближайшие 14 дней. 
