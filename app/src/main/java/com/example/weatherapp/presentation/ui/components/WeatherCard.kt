@@ -33,7 +33,8 @@ fun WeatherCard(dateString: String?, maxTemp: Double, minTemp: Double, precipita
             Icon(
                 painter = getWeatherIcon(weatherCode),
                 contentDescription = "Weather Icon",
-                modifier = Modifier.size(88.dp),
+                modifier = Modifier
+                    .size(88.dp),
                 tint = Color.Unspecified
             )
         }
