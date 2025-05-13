@@ -46,7 +46,7 @@ fun WeatherScreen(viewModel: WeatherViewModel, city: String?) {
                 WeatherCurrentCard(city, weather)
                 Spacer(modifier = Modifier.height(16.dp))
 
-                LazyColumn(modifier = Modifier.fillMaxWidth()) {
+                LazyColumn {
                     items(weather.daily.time.size) { i ->
                         val maxTemp = weather.daily.temperature_2m_max.getOrNull(i)
                         val minTemp = weather.daily.temperature_2m_min.getOrNull(i)
