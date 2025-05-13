@@ -30,17 +30,29 @@ com.example.weatherapp
 │
 ├── presentation  
 │   ├── ui  
-│   │   ├── WeatherCard.kt  
-│   │   ├── WeatherDropdownMenu.kt  
-│   │   └── WeatherScreen.kt  
-│   └── viewmodels  
-│       ├── WeatherViewModel.kt  
-│       └── WeatherViewModelFactory.kt  
-│  
-├── ui.theme  
-│   └── (цвета, типографика, темы)  
-│  
-└── MainActivity.kt  
+│   │   ├── components  
+│   │   │    ├── CityBackground.kt    
+│   │   │    ├── CityCard.kt    
+│   │   │    ├── CityHeader.kt    
+│   │   │    ├── CitySearchBar.kt    
+│   │   │    ├── WeatherBackground.kt    
+│   │   │    ├── WeatherCard.kt    
+│   │   │    ├── WeatherCurrentCard.kt    
+│   │   │    ├── WeatherHeader.kt    
+│   │   │    ├── WeatherIcon.kt    
+│   │   │    └── WeatherIsLoading.kt  
+│   │   │  
+│   │   └── screen    
+│   │       ├── CitySelectionScreen.kt    
+│   │       └── WeatherScreen.kt    
+│   └── viewmodels      
+│         ├── WeatherViewModel.kt      
+│         └── WeatherViewModelFactory.kt      
+│      
+├── ui.theme    
+│   └── (цвета, типографика, темы)    
+│    
+└── MainActivity.kt    
 
 ## Структура проекта
 
