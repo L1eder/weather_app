@@ -42,17 +42,17 @@ com.example.weatherapp
 │   │   │    ├── WeatherIcon.kt    
 │   │   │    └── WeatherIsLoading.kt  
 │   │   │  
-│   │   └── screen  
-│   │       ├── CitySelectionScreen.kt  
-│   │       └── WeatherScreen.kt  
-│   └── viewmodels    
-│         ├── WeatherViewModel.kt    
-│         └── WeatherViewModelFactory.kt    
+│   │   └── screen    
+│   │       ├── CitySelectionScreen.kt    
+│   │       └── WeatherScreen.kt    
+│   └── viewmodels      
+│         ├── WeatherViewModel.kt      
+│         └── WeatherViewModelFactory.kt      
+│      
+├── ui.theme    
+│   └── (цвета, типографика, темы)    
 │    
-├── ui.theme  
-│   └── (цвета, типографика, темы)  
-│  
-└── MainActivity.kt  
+└── MainActivity.kt    
 
 ## Структура проекта
 
